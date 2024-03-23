@@ -1,3 +1,9 @@
 INFO:__main__:Hello
 INFO:LoggerSingleton:user added
 DEBUG:LoggerSingleton:user (('Edd', '25345543')) was added to dict: {'Edd': '25345543'}
+ERROR:LoggerSingleton:Can not add a user without a name and a phone ((<__main__.UkrainianBot object at 0x100c5e360>, [], {}))
+CRITICAL:LoggerSingleton:Address book is None
+ERROR:LoggerSingleton:Can not add a user without a name and a phone ((<__main__.UkrainianBot object at 0x1043262a0>, [], None))
+CRITICAL:LoggerSingleton:Address book is None
+CRITICAL:LoggerSingleton:Critical error, addressBook is None
+CRITICAL:LoggerSingleton:Address book is None

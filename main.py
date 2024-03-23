@@ -7,6 +7,19 @@ from LoggerSingleton import LoggerSingleton
 # logger = logging.getLogger(__name__)
 # logging.basicConfig(filename='myapp.log', level=logging.DEBUG)
 
+def input_error(func):
+    def wrapper(*args, **kwargs):
+        try:
+            result = func(*args, **kwargs)
+            return result
+        except IndexError:
+            logger.error(f"Can not add a user without a name and a phone ({args})")
+        except KeyError:
+            logger.warning(f"args received {args}, but expected two")
+        except AttributeError:
+            logger.critical("Critical error, addressBook is None")
+    return wrapper
+
 logger = LoggerSingleton()
 
 class Bot(ABC):
@@ -24,13 +37,10 @@ class Bot(ABC):
 
 
 class UkrainianBot(Bot):
+    @input_error
     def add(self, args, addressBook):
-        if addressBook is None:
-            logger.fatal('Address book is None')
-            return
         if len(args) == 0:
-            logger.error(f"Can not add a user without a name and a phone ({args})")
-            return
+            raise IndexError
         elif len(args) == 1:
             logger.warning(f"args received {args}, but expected two")
             name, = args
