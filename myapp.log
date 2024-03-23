@@ -1,0 +1,3 @@
+INFO:__main__:Hello
+INFO:LoggerSingleton:user added
+DEBUG:LoggerSingleton:user (('Edd', '25345543')) was added to dict: {'Edd': '25345543'}
